@@ -1,0 +1,26 @@
+{
+  "name": "khatabook",
+  "version": "1.0.0",
+  "description": "len den app",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx nodemon src/index.js",
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/virendrapatel62/khatabook-express-ejs-mongodb.git"
+  },
+  "author": "virendra patel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/virendrapatel62/khatabook-express-ejs-mongodb/issues"
+  },
+  "homepage": "https://github.com/virendrapatel62/khatabook-express-ejs-mongodb#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "joi": "^17.4.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.12"
+  }
+}
