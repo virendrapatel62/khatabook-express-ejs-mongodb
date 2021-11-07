@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/virendrapatel62/khatabook-express-ejs-mongodb#readme",
   "dependencies": {
+    "ejs": "^3.1.6",
     "express": "^4.17.1",
     "joi": "^17.4.2",
     "jsonwebtoken": "^8.5.1",

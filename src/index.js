@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const { createConnection } = require("./db");
 const { User, Khatabook, Customer, Entry } = require("./models");
 
@@ -9,10 +10,15 @@ createConnection()
 
 //   Expresss Js Configuration
 const app = express();
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 const PORT = 3000;
 
 app.listen(PORT, () => console.log(`Server is running on ${PORT}`));
 
 app.get("/", (request, response) => {
-  response.json({ message: "App is working." });
+  response.render("pages/index");
+});
+app.get("/login", (request, response) => {
+  response.render("pages/login");
 });
