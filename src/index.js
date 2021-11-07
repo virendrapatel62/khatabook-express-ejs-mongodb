@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+const router = require("./routers");
 const { createConnection } = require("./db");
 const { User, Khatabook, Customer, Entry } = require("./models");
 
@@ -16,9 +17,4 @@ const PORT = 3000;
 
 app.listen(PORT, () => console.log(`Server is running on ${PORT}`));
 
-app.get("/", (request, response) => {
-  response.render("pages/index");
-});
-app.get("/login", (request, response) => {
-  response.render("pages/login");
-});
+app.use(router);
