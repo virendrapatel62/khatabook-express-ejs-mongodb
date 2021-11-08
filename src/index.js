@@ -11,6 +11,7 @@ createConnection()
 
 //   Expresss Js Configuration
 const app = express();
+app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 const PORT = 3000;
