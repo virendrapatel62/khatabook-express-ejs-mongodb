@@ -5,6 +5,10 @@
     <h1>Register Here</h1>
     <hr />
 
+    <% if(typeof errorMessage !== 'undefined') { %>
+    <p class="alert alert-danger"><%= errorMessage%></p>
+    <% } %>
+
     <form action="" method="post">
       <div class="form-group mt-3">
         <label for="" class="form-label">Name</label>
