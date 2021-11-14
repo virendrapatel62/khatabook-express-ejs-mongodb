@@ -4,11 +4,13 @@ const {
   loginPagehandler,
   registerPageHandler,
   registerFormHandler,
+  loginFormHandler,
 } = require("../controllers/accounts");
 const router = express.Router();
 
 router.get("/", homepageHandler);
 router.get("/login", loginPagehandler);
+router.post("/login", loginFormHandler);
 router.get("/register", registerPageHandler);
 router.post("/register", registerFormHandler);
 

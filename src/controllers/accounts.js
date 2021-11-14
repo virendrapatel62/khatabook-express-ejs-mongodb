@@ -8,6 +8,12 @@ const registerPageHandler = (request, response) => {
   response.render("pages/register");
 };
 
+const loginFormHandler = (request, response) => {
+  console.log(request.body);
+  const { email, password } = request.body;
+  response.json("POST Request Handlers");
+};
+
 function validateUserRegistrationData(formValues) {
   const { name, email, password, password2, phone } = formValues;
   let errorMessage = null;
@@ -67,4 +73,5 @@ module.exports = {
   loginPagehandler,
   registerPageHandler,
   registerFormHandler,
+  loginFormHandler,
 };
