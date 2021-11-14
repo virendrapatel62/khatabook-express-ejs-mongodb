@@ -11,7 +11,20 @@ const registerPageHandler = (request, response) => {
 const loginFormHandler = (request, response) => {
   console.log(request.body);
   const { email, password } = request.body;
-  response.json("POST Request Handlers");
+
+  User.findOne({ email })
+    .then((user) => {
+      if (!user) throw new Error();
+
+      const isPasswordMatched = passwordHash.verify(password, user.password);
+      if (!isPasswordMatched) {
+        throw new Error();
+      }
+      return response.render("pages/index");
+    })
+    .catch((error) => {
+      response.render("pages/login", { error: "email or password invalid" });
+    });
 };
 
 function validateUserRegistrationData(formValues) {
