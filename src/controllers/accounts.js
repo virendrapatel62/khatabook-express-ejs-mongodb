@@ -2,6 +2,7 @@ const { User } = require("../models");
 const passwordHash = require("password-hash");
 
 const loginPagehandler = (request, response) => {
+  console.log(request.session);
   response.render("pages/login");
 };
 const registerPageHandler = (request, response) => {
