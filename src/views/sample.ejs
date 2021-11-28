@@ -7,8 +7,13 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>cookies Example</h1>
-    <p><%= locals.request?.cookies.name %></p>
-    <p><%= locals.request?.cookies.time %></p>
+    <h1>Session Example</h1>
+
+    <a href="/page1">Page 1</a>
+    <a href="/page2">Page 2</a>
+    <a href="/page">Page</a>
+
+    <%= locals.request?.session?.user.name %> <%=
+    locals.request?.session?.user.age %>
   </body>
 </html>
