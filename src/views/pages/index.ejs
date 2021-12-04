@@ -2,6 +2,7 @@
 
 <div>
   <h1>Home Page</h1>
+  <h1>Logged In User : <%= locals.request?.session?.user?.name %></h1>
 </div>
 
 <%- include("../components/layout/footer") %>

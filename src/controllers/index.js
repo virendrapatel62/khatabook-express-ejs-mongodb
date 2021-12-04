@@ -1,5 +1,6 @@
 const homepageHandler = (request, response) => {
-  response.render("pages/index");
+  console.log(request.session);
+  response.render("pages/index", { request });
 };
 
 module.exports = { homepageHandler };

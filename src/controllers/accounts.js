@@ -21,9 +21,11 @@ const loginFormHandler = (request, response) => {
       if (!isPasswordMatched) {
         throw new Error();
       }
-      return response.render("pages/index");
+      request.session.user = user;
+      return response.render("pages/index", { request });
     })
     .catch((error) => {
+      console.log(error);
       response.render("pages/login", { error: "email or password invalid" });
     });
 };
