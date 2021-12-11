@@ -3,9 +3,10 @@ const {
   khatabookPageHandler,
   khatabookFormhandler,
 } = require("../controllers/khatabook");
+const { userAuthMiddleware } = require("../middlewares");
 const khatabookRouter = express.Router();
 
-khatabookRouter.get("/", khatabookPageHandler);
-khatabookRouter.post("/", khatabookFormhandler);
+khatabookRouter.get("/", userAuthMiddleware, khatabookPageHandler);
+khatabookRouter.post("/", userAuthMiddleware, khatabookFormhandler);
 
 module.exports = { khatabookRouter };

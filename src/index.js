@@ -4,6 +4,7 @@ const { commonRouter, khatabookRouter } = require("./routers");
 const { createConnection } = require("./db");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
+const { userAuthMiddleware } = require("./middlewares");
 
 // Mongo Db Connection
 createConnection()
@@ -26,6 +27,7 @@ const PORT = 3000;
 app.listen(PORT, () => console.log(`Server is running on ${PORT}`));
 
 app.use(commonRouter);
+
 app.use("/khatabook", khatabookRouter);
 
 app.get("/page/:name/:age", (req, res) => {

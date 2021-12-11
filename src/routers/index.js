@@ -7,9 +7,10 @@ const {
   registerFormHandler,
   loginFormHandler,
 } = require("../controllers/accounts");
+const { userAuthMiddleware } = require("../middlewares");
 const router = express.Router();
 
-router.get("/", homepageHandler);
+router.get("/", userAuthMiddleware, homepageHandler);
 router.get("/login", loginPagehandler);
 router.post("/login", loginFormHandler);
 router.get("/register", registerPageHandler);
