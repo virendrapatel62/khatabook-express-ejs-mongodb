@@ -1,6 +1,6 @@
 const express = require("express");
 const path = require("path");
-const router = require("./routers");
+const { commonRouter, khatabookRouter } = require("./routers");
 const { createConnection } = require("./db");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
@@ -25,7 +25,8 @@ const PORT = 3000;
 
 app.listen(PORT, () => console.log(`Server is running on ${PORT}`));
 
-app.use(router);
+app.use(commonRouter);
+app.use("/khatabook", khatabookRouter);
 
 app.get("/page/:name/:age", (req, res) => {
   const { name, age } = req.params;

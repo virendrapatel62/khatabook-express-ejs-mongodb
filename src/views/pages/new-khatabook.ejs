@@ -1,0 +1,23 @@
+<%- include("../components/layout/header") %>
+
+<div class="container main">
+  <h1>New Khat abook Form</h1>
+
+  <% if (locals.successMessage){ %>
+  <p class="alert alert-success"><%= locals.successMessage %></p>
+  <% } %>
+
+  <form method="post">
+    <label for="">Khatabook name</label>
+    <input
+      type="text"
+      name="title"
+      id="title"
+      placeholder="Enter Khatabook Name"
+    />
+
+    <input type="submit" value="Create" />
+  </form>
+</div>
+
+<%- include("../components/layout/footer") %>
