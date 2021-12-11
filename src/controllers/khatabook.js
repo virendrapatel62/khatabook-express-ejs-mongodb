@@ -1,10 +1,13 @@
 const { Khatabook } = require("../models");
 
-const serveKahatabookForm = (request, response) => {
-  response.render("pages/new-khatabook", { request });
+const khatabookPageHandler = async (request, response) => {
+  console.log(request.errorMessage);
+  const loggedInUser = request.session?.user?._id;
+  const khatabooks = await Khatabook.find({ user: loggedInUser });
+  response.render("pages/khatabook", { request, khatabooks });
 };
 
-const createKhatabookHandler = (request, response) => {
+const khatabookFormhandler = (request, response) => {
   const { body } = request;
   const title = body?.title;
   const user = request.session?.user;
@@ -14,10 +17,8 @@ const createKhatabookHandler = (request, response) => {
     user: user._id,
   })
     .then(() => {
-      response.render("pages/new-khatabook", {
-        request,
-        successMessage: "Khatabook created",
-      });
+      request.errorMessage = "Hello World..";
+      response.redirect("/khatabook");
     })
     .catch((err) => {
       console.log(err);
@@ -25,6 +26,6 @@ const createKhatabookHandler = (request, response) => {
 };
 
 module.exports = {
-  serveKahatabookForm,
-  createKhatabookHandler,
+  khatabookFormhandler,
+  khatabookPageHandler,
 };

@@ -1,11 +1,11 @@
 const express = require("express");
 const {
-  serveKahatabookForm,
-  createKhatabookHandler,
+  khatabookPageHandler,
+  khatabookFormhandler,
 } = require("../controllers/khatabook");
 const khatabookRouter = express.Router();
 
-khatabookRouter.get("/create", serveKahatabookForm);
-khatabookRouter.post("/create", createKhatabookHandler);
+khatabookRouter.get("/", khatabookPageHandler);
+khatabookRouter.post("/", khatabookFormhandler);
 
 module.exports = { khatabookRouter };
