@@ -25,7 +25,16 @@ const khatabookFormhandler = (request, response) => {
     });
 };
 
+const khatabookDeleteHandler = (request, response) => {
+  const khatabook = request.body.khatabook;
+
+  Khatabook.deleteOne({ _id: khatabook }).then(() => {
+    response.redirect("/khatabook");
+  });
+};
+
 module.exports = {
   khatabookFormhandler,
   khatabookPageHandler,
+  khatabookDeleteHandler,
 };

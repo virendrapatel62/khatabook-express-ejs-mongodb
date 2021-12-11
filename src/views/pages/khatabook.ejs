@@ -16,6 +16,7 @@
               <tr>
                 <th>Sno.</th>
                 <th>Title</th>
+                <th>Actions</th>
               </tr>
             </thead>
 
@@ -24,6 +25,20 @@
               <tr>
                 <td><%= index+1 %></td>
                 <td><%= khatabooks[index].title %></td>
+                <td>
+                  <form action="/khatabook/delete/" method="post">
+                    <input
+                      type="hidden"
+                      name="khatabook"
+                      value="<%= khatabooks[index].id %>"
+                    />
+                    <input
+                      type="submit"
+                      class="btn btn-danger btn-sm"
+                      value="Delele"
+                    />
+                  </form>
+                </td>
               </tr>
               <% } %>
             </tbody>
