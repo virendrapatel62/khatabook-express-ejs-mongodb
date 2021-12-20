@@ -5,6 +5,7 @@ const { createConnection } = require("./db");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const { userAuthMiddleware } = require("./middlewares");
+const { customerRouter } = require("./routers/customers");
 
 // Mongo Db Connection
 createConnection()
@@ -29,6 +30,7 @@ app.listen(PORT, () => console.log(`Server is running on ${PORT}`));
 app.use(commonRouter);
 
 app.use("/khatabook", khatabookRouter);
+app.use("/customers", customerRouter);
 
 app.get("/page/:name/:age", (req, res) => {
   const { name, age } = req.params;

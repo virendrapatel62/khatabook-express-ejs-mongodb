@@ -1,0 +1,41 @@
+<%- include("../components/layout/header") %>
+
+<div class="container main">
+  <div class="col-5 shadow rounded p-4">
+    <h1>Add A New Customer</h1>
+    <hr />
+
+    <% if(locals.error) { %>
+    <p class="alert alert-danger"><%= error?.message %></p>
+    <% } %>
+
+    <form action="" method="post">
+      <div class="form-group mt-3">
+        <label for="" class="form-label">Select Khatabook</label>
+        <select name="khatabook" class="form-control">
+          <option value="">Select Khatabook</option>
+          <% for(khatabook of locals.khatabooks){ %>
+          <option value="<%= khatabook._id%>"><%= khatabook.title %></option>
+          <% } %>
+        </select>
+      </div>
+      <div class="form-group mt-3">
+        <label for="" class="form-label">Customer Name</label>
+        <input type="text" name="customerName" class="form-control" />
+      </div>
+      <div class="form-group mt-3">
+        <label for="" class="form-label">Customer Phone</label>
+        <input type="number" name="phone" class="form-control" />
+      </div>
+      <div class="d-grid mt-3">
+        <input
+          type="submit"
+          class="btn btn-dark btn-block"
+          value="Create Customer"
+        />
+      </div>
+    </form>
+  </div>
+</div>
+
+<%- include("../components/layout/footer") %>
