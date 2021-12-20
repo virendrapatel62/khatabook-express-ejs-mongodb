@@ -1,0 +1,25 @@
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Sno.</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Created On</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% for (let index in locals.customers) { %>
+
+      <tr>
+        <td><%= Number(index)+1 %></td>
+        <td><%= customers[index].name %></td>
+        <td><%= customers[index].phone %></td>
+        <td><%= customers[index].createdAt.toDateString() %></td>
+      </tr>
+
+      <% } %>
+    </tbody>
+  </table>
+</div>

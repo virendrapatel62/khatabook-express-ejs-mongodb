@@ -12,52 +12,20 @@
 
   <div class="row">
     <div class="col-3 border p-3">
-      <h5>Select Khatabook</h5>
-      <hr />
-      <ul class="list-group">
-        <% for (let khatabook of locals.khatabooks) { %>
-        <li class="list-group-item">
-          <a href="?khatabook=<%= khatabook.id %>"><%= khatabook.title %></a>
-        </li>
-        <% } %>
-      </ul>
+      <%- include('../components/customers/select-khatabook') %>
     </div>
     <div class="col p-3">
       <h5>Customer List</h5>
       <hr />
 
       <% if(!locals.customers.length ) { %>
-      <div class="alert alert-info">
-        <h4>No Customers In Selected Khatabook</h4>
-      </div>
+      <!-- No Customers start -->
+      <%- include('../components/customers/no-customers') %>
+      <!-- no customers end -->
       <% } else { %>
-
-      <div>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Sno.</th>
-              <th>Name</th>
-              <th>Phone</th>
-              <th>Created On</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <% for (let index in locals.customers) { %>
-
-            <tr>
-              <td><%= Number(index)+1 %></td>
-              <td><%= customers[index].name %></td>
-              <td><%= customers[index].phone %></td>
-              <td><%= customers[index].createdAt.toDateString() %></td>
-            </tr>
-
-            <% } %>
-          </tbody>
-        </table>
-      </div>
-
+      <!-- customer table start -->
+      <%- include('../components/customers/customer-table') %>
+      <!-- customer table end -->
       <% } %>
     </div>
   </div>

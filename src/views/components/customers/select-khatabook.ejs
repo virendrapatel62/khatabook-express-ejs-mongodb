@@ -1,0 +1,11 @@
+<div>
+  <h5>Select Khatabook</h5>
+  <hr />
+  <ul class="list-group">
+    <% for (let khatabook of locals.khatabooks) { %>
+    <li class="list-group-item">
+      <a href="?khatabook=<%= khatabook.id %>"><%= khatabook.title %></a>
+    </li>
+    <% } %>
+  </ul>
+</div>
