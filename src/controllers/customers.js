@@ -1,5 +1,18 @@
 const { Khatabook, Customer } = require("../models");
 
+const showCustomers = async (request, response) => {
+  const user = request.session.user;
+  const khatabook = request.query.khatabook;
+  const khatabooks = await Khatabook.find({ user: user._id }).select("title");
+  let customers = [];
+  if (khatabook) {
+    customers = await Customer.find({ khatabook: khatabook });
+  }
+
+  const context = { request, khatabooks, customers };
+  response.render("pages/customers", context);
+};
+
 const serveCustomerCreationForm = async (request, response) => {
   console.log(request.message);
   const user = request.session.user;
@@ -42,4 +55,5 @@ const createCustomer = async (request, response) => {
 module.exports = {
   serveCustomerCreationForm,
   createCustomer,
+  showCustomers,
 };
