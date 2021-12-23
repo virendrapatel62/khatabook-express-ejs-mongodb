@@ -1,21 +1,23 @@
 <%- include("../components/layout/header") %>
 
-<div class="container">
-  <h1>Select A Khatabook To Make An Entry</h1>
-  <hr />
+<!-- Khatabook Selctor -->
 
-  <ul class="list-group">
-    <% for(let khatabook of khatabooks){ %>
-    <li class="list-group-item">
-      <a
-        style="text-decoration: none"
-        class="text-dark"
-        href="<%= khatabook.id %>"
-        ><%= khatabook.title %></a
-      >
-    </li>
-    <% } %>
-  </ul>
-</div>
+<% if (locals.render === "khatabook-selector") { %>
+<!--  -->
+<%-include('../components/entries/khatabook-selector')%>
+<!--  -->
+<% } %>
+
+<!-- Khatabook Selector End -->
+
+<!-- Entry Form -->
+
+<% if (locals.render === "customer-selector") { %>
+<!--  -->
+<%- include('../components/entries/customer-selector')%>
+<!--  -->
+<% } %>
+
+<!-- Entry Form End -->
 
 <%- include("../components/layout/footer") %>

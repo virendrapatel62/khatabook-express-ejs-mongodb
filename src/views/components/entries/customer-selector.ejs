@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>Select A Customer</h1>
+  <hr />
+
+  <ul class="list-group">
+    <% for(let customer of locals.customers || []){ %>
+    <li class="list-group-item">
+      <a
+        style="text-decoration: none"
+        class="text-dark"
+        href="/entiries/khatabook/<%= selectedKhatabook%>/customer/<%= customer.id %>"
+        ><%= customer.name %></a
+      >
+    </li>
+    <% } %>
+  </ul>
+</div>
