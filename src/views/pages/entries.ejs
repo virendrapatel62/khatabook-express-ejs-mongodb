@@ -1,0 +1,21 @@
+<%- include("../components/layout/header") %>
+
+<div class="container">
+  <h1>Select A Khatabook To Make An Entry</h1>
+  <hr />
+
+  <ul class="list-group">
+    <% for(let khatabook of khatabooks){ %>
+    <li class="list-group-item">
+      <a
+        style="text-decoration: none"
+        class="text-dark"
+        href="<%= khatabook.id %>"
+        ><%= khatabook.title %></a
+      >
+    </li>
+    <% } %>
+  </ul>
+</div>
+
+<%- include("../components/layout/footer") %>

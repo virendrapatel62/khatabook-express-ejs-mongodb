@@ -6,6 +6,7 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const { userAuthMiddleware } = require("./middlewares");
 const { customerRouter } = require("./routers/customers");
+const { entryRouter } = require("./routers/entry");
 
 // Mongo Db Connection
 createConnection()
@@ -31,6 +32,7 @@ app.use(commonRouter);
 
 app.use("/khatabook", khatabookRouter);
 app.use("/customers", customerRouter);
+app.use("/entries", entryRouter);
 
 app.get("/page/:name/:age", (req, res) => {
   const { name, age } = req.params;
