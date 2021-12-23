@@ -24,5 +24,24 @@ const customerSelectorPage = async (request, response) => {
   };
   return response.render("pages/entries", context);
 };
+const entryCreatorPage = async (request, response) => {
+  let { customer, khatabook } = request.params;
 
-module.exports = { khatabookSelectorHandler, customerSelectorPage };
+  customer = await Customer.findById(customer);
+  khatabook = await Khatabook.findById(khatabook);
+
+  console.log({ customer, khatabook });
+  const context = {
+    request,
+    selectedKhatabook: khatabook,
+    selectedCustomer: customer,
+    render: "entry-creator",
+  };
+  return response.render("pages/entries", context);
+};
+
+module.exports = {
+  khatabookSelectorHandler,
+  customerSelectorPage,
+  entryCreatorPage,
+};

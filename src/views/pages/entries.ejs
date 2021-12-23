@@ -10,7 +10,7 @@
 
 <!-- Khatabook Selector End -->
 
-<!-- Entry Form -->
+<!-- customer Selector -->
 
 <% if (locals.render === "customer-selector") { %>
 <!--  -->
@@ -18,6 +18,16 @@
 <!--  -->
 <% } %>
 
-<!-- Entry Form End -->
+<!-- customer Selector End -->
+
+<!-- Entry Creator -->
+
+<% if (locals.render === "entry-creator") { %>
+<!--  -->
+<%- include('../components/entries/entry-creator')%>
+<!--  -->
+<% } %>
+
+<!-- Entry Creator End -->
 
 <%- include("../components/layout/footer") %>
