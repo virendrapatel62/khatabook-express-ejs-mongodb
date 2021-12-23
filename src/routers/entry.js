@@ -3,6 +3,7 @@ const {
   khatabookSelectorHandler,
   customerSelectorPage,
   entryCreatorPage,
+  createEntryHandler,
 } = require("../controllers/entry");
 const { userAuthMiddleware } = require("../middlewares");
 const entryRouter = express.Router();
@@ -13,6 +14,11 @@ entryRouter.get(
   "/khatabook/:khatabook/customer/:customer",
   userAuthMiddleware,
   entryCreatorPage
+);
+entryRouter.post(
+  "/khatabook/:khatabook/customer/:customer",
+  userAuthMiddleware,
+  createEntryHandler
 );
 
 entryRouter.get("/", userAuthMiddleware, khatabookSelectorHandler);

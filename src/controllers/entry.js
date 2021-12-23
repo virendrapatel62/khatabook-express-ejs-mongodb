@@ -13,9 +13,7 @@ const khatabookSelectorHandler = async (request, response) => {
 
 const customerSelectorPage = async (request, response) => {
   const khatabookId = request.params.khatabook;
-  console.log("SELECTED KHATABOOK IS", khatabookId);
   const customers = await Customer.find({ khatabook: khatabookId });
-  console.log(customers);
   const context = {
     request,
     customers,
@@ -26,11 +24,8 @@ const customerSelectorPage = async (request, response) => {
 };
 const entryCreatorPage = async (request, response) => {
   let { customer, khatabook } = request.params;
-
   customer = await Customer.findById(customer);
   khatabook = await Khatabook.findById(khatabook);
-
-  console.log({ customer, khatabook });
   const context = {
     request,
     selectedKhatabook: khatabook,
@@ -40,8 +35,18 @@ const entryCreatorPage = async (request, response) => {
   return response.render("pages/entries", context);
 };
 
+const createEntryHandler = (request, response) => {
+  // handling entry
+  // type ==> gave or got
+  console.log(request.body);
+  const amount = +request.body.amount;
+  const type = +request.body.type;
+  return response.redirect(request.originalUrl);
+};
+
 module.exports = {
   khatabookSelectorHandler,
   customerSelectorPage,
   entryCreatorPage,
+  createEntryHandler,
 };

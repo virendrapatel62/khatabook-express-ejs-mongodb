@@ -3,4 +3,105 @@
     You are adding entry for <b><%= selectedCustomer.name%></b> in Khatabook
     <b><%= selectedKhatabook.title%></b>
   </div>
+
+  <div class="mt-4 col-6 mx-auto">
+    <div class="row">
+      <div class="col d-grid">
+        <button
+          data-bs-toggle="modal"
+          data-bs-target="#gave-modal"
+          class="btn btn-danger"
+        >
+          You Gave ₹
+        </button>
+      </div>
+      <div class="col d-grid">
+        <button
+          data-bs-toggle="modal"
+          data-bs-target="#got-modal"
+          class="btn btn-success"
+        >
+          You Got ₹
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!-- gave modal -->
+
+<div
+  class="modal fade"
+  id="gave-modal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          You Gave To <%= selectedCustomer.name%>
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form method="post">
+          <div class="mb-3">
+            <label class="form-label">Amount</label>
+            <input class="form-control" name="amount" type="number" />
+          </div>
+          <input class="form-control" type="hidden" name="type" value="gave" />
+
+          <input type="submit" class="btn btn-primary col-lg-6" value="Save" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- gave modal end -->
+
+<!-- Got modal -->
+
+<div
+  class="modal fade"
+  id="got-modal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          You Got From <%= selectedCustomer.name%>
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form method="post">
+          <div class="mb-3">
+            <label class="form-label">Amount</label>
+            <input class="form-control" name="amount" type="number" />
+          </div>
+          <input class="form-control" type="hidden" name="type" value="got" />
+
+          <input type="submit" class="btn btn-primary col-lg-6" value="Save" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Got Modal End -->
