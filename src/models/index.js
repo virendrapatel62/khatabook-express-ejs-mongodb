@@ -80,6 +80,11 @@ const entrySchema = new Schema(
       type: String,
       required: true,
     },
+    date: {
+      type: Date,
+      default: Date.now,
+      required: true,
+    },
   },
   { timestamps: { createdAt: "createdAt", updatedAt: "updatedAt" } }
 );
@@ -89,9 +94,20 @@ const Khatabook = mongoose.model("Khatabook", khatabookSchema);
 const Customer = mongoose.model("Customer", customerSchema);
 const Entry = mongoose.model("Entry", entrySchema);
 
+const PAYMENT_METHODS = [
+  "Cash",
+  "Upi",
+  "Google Pay",
+  "Phone Pay",
+  "Amazon Pay",
+  "Bank Transfer",
+  "Cheque",
+];
+
 module.exports = {
   User,
   Khatabook,
   Customer,
   Entry,
+  PAYMENT_METHODS,
 };

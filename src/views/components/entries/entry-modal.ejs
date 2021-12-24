@@ -1,0 +1,49 @@
+<div
+  class="modal fade"
+  id="<%= modalId %>"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><%= modalTitle %></h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form method="post">
+          <div class="mb-3">
+            <label class="form-label">Amount</label>
+            <input class="form-control" name="amount" type="number" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Select Payment Method</label>
+            <select name="paymentMethod" class="form-control">
+              <% for (let method of locals.PAYMENT_METHODS || []) { %>
+              <option value="<%= method %>"><%= method %></option>
+              <% } %>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Date</label>
+            <input class="form-control" name="date" type="date" />
+          </div>
+          <input
+            class="form-control"
+            type="hidden"
+            name="type"
+            value="<%= type %>"
+          />
+
+          <input type="submit" class="btn btn-primary col-lg-6" value="Save" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

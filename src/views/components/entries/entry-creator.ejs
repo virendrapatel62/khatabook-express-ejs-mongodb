@@ -29,79 +29,11 @@
 </div>
 
 <!-- gave modal -->
-
-<div
-  class="modal fade"
-  id="gave-modal"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">
-          You Gave To <%= selectedCustomer.name%>
-        </h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body">
-        <form method="post">
-          <div class="mb-3">
-            <label class="form-label">Amount</label>
-            <input class="form-control" name="amount" type="number" />
-          </div>
-          <input class="form-control" type="hidden" name="type" value="gave" />
-
-          <input type="submit" class="btn btn-primary col-lg-6" value="Save" />
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
+<%- include('./entry-modal', { type : 'gave' , modalId : "gave-modal" ,
+modalTitle : `You Gave To ${selectedCustomer.name}` } ) %>
 <!-- gave modal end -->
 
 <!-- Got modal -->
-
-<div
-  class="modal fade"
-  id="got-modal"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">
-          You Got From <%= selectedCustomer.name%>
-        </h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body">
-        <form method="post">
-          <div class="mb-3">
-            <label class="form-label">Amount</label>
-            <input class="form-control" name="amount" type="number" />
-          </div>
-          <input class="form-control" type="hidden" name="type" value="got" />
-
-          <input type="submit" class="btn btn-primary col-lg-6" value="Save" />
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
+<%- include('./entry-modal' , {type : 'got' , modalId : 'got-modal' , modalTitle
+: `You Got From ${selectedCustomer.name}` }) %>
 <!-- Got Modal End -->

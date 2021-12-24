@@ -1,4 +1,4 @@
-const { Khatabook, Customer } = require("../models");
+const { Khatabook, Customer, Entry, PAYMENT_METHODS } = require("../models");
 
 const khatabookSelectorHandler = async (request, response) => {
   const user = request.session.user;
@@ -30,17 +30,36 @@ const entryCreatorPage = async (request, response) => {
     request,
     selectedKhatabook: khatabook,
     selectedCustomer: customer,
+    PAYMENT_METHODS,
     render: "entry-creator",
   };
   return response.render("pages/entries", context);
 };
 
-const createEntryHandler = (request, response) => {
+const createEntryHandler = async (request, response) => {
   // handling entry
   // type ==> gave or got
   console.log(request.body);
-  const amount = +request.body.amount;
-  const type = +request.body.type;
+  const body = request.body;
+  let { customer } = request.params;
+  const amount = +body.amount;
+  const date = new Date(body.date);
+  const type = body.type;
+  const paymentMethod = body.paymentMethod;
+
+  try {
+    const entry = {
+      paymentMethod,
+      customer,
+      youGave: type === "gave" ? amount : 0,
+      youGot: type === "got" ? amount : 0,
+      date: isNaN(date.getTime()) ? new Date() : date,
+    };
+
+    await Entry.create(entry);
+  } catch (error) {
+    console.log(error.message);
+  }
   return response.redirect(request.originalUrl);
 };
 
