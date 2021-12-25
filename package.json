@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "npx nodemon src/index.js",
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+    "ejs-check" : "ejslint src/views"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
   "dependencies": {
     "cookie-parser": "^1.4.6",
     "ejs": "^3.1.6",
+    "ejs-lint": "^1.2.1",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
     "joi": "^17.4.2",

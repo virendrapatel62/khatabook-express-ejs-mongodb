@@ -7,6 +7,7 @@ const session = require("express-session");
 const { userAuthMiddleware } = require("./middlewares");
 const { customerRouter } = require("./routers/customers");
 const { entryRouter } = require("./routers/entry");
+const ejsLint = require("ejs-lint");
 
 // Mongo Db Connection
 createConnection()

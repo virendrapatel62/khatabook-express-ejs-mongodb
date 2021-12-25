@@ -26,11 +26,38 @@ const entryCreatorPage = async (request, response) => {
   let { customer, khatabook } = request.params;
   customer = await Customer.findById(customer);
   khatabook = await Khatabook.findById(khatabook);
+
+  const entries = await Entry.find({ customer: customer });
+  const total = {
+    youGave: 0,
+    youGot: 0,
+  };
+
+  let youWillGet = 0;
+  let youWillGive = 0;
+
+  entries.forEach((entry) => {
+    total.youGave += entry.youGave;
+    total.youGot += entry.youGot;
+  });
+
+  if (total.youGave > total.youGot) {
+    youWillGet = total.youGave - total.youGot;
+  }
+  if (total.youGave < total.youGot) {
+    youWillGive = total.youGot - total.youGave;
+  }
+
+  console.log({ total });
+
   const context = {
     request,
     selectedKhatabook: khatabook,
     selectedCustomer: customer,
+    entries,
     PAYMENT_METHODS,
+    youWillGet,
+    youWillGive,
     render: "entry-creator",
   };
   return response.render("pages/entries", context);
