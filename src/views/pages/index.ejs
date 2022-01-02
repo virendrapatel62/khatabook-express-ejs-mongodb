@@ -1,22 +1,37 @@
-<%- include("../components/layout/header") %>
+<%- include("../components/layout/header" , {includeHeader : true }) %>
 
-<div class="container">
-  <h1>Home Page</h1>
+<div class="container-fluid" id="dashboard">
   <br />
-  <ul class="list-group">
-    <li class="list-group-item">
-      <a class="btn btn-success" href="/khatabook">Khatabook</a>
-    </li>
-    <li class="list-group-item">
-      <a class="btn btn-success" href="/customers">Customers</a>
-    </li>
-    <li class="list-group-item">
-      <a class="btn btn-success" href="/customers/create">Add Customers</a>
-    </li>
-    <li class="list-group-item">
-      <a class="btn btn-success" href="/entries/">Create An Entry</a>
-    </li>
-  </ul>
+  <div class="row" style="height: 95%">
+    <div class="col-2" style="border-right: 1px solid green">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <a href="/dashboard" target="content-iframe">Dashboard</a>
+        </li>
+        <li class="list-group-item">
+          <a href="/khatabook" target="content-iframe">Khatabook</a>
+        </li>
+        <li class="list-group-item">
+          <a href="/customers" target="content-iframe">Customers</a>
+        </li>
+        <li class="list-group-item">
+          <a href="/customers/create" target="content-iframe">Add Customers</a>
+        </li>
+        <li class="list-group-item">
+          <a href="/entries/" target="content-iframe">Create An Entry</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col">
+      <iframe
+        height="100%"
+        width="100%"
+        name="content-iframe"
+        frameborder="0"
+        src="/dashboard"
+      ></iframe>
+    </div>
+  </div>
 </div>
 
 <%- include("../components/layout/footer") %>
