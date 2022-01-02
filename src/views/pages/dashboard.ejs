@@ -7,14 +7,24 @@
   <div class="row mx-auto">
     <% for (let khatabook of khatabooks ) { %>
     <div class="col-3 mx-auto">
-      <div class="card rounded">
+      <div class="card rounded mt-4">
         <div class="card-body">
           <h5 class="card-title"><%= khatabook.title%></h5>
           <hr />
           <p class="card-text">
             Customers : <b><%= khatabook.customerCount %></b> <br />
-            You Will Get : <b>900</b> <br />
-            You Will Give : <b>334</b> <br />
+
+            <% if (khatabook.youWillGet) { %>
+            <!--  -->
+            <span class="text-danger"
+              >You Will Get : <b><%= khatabook.youWillGet %></b> <br
+            /></span>
+            <% } if(khatabook.youWillGive) { %>
+            <!--  -->
+            <span class="text-success"
+              >You Will Give : <b><%= khatabook.youWillGive %></b> <br
+            /></span>
+            <% } %>
           </p>
           <!-- <a href="#" class="card-link">Card link</a>
           <a href="#" class="card-link">Another link</a> -->
