@@ -1,0 +1,28 @@
+<%- include("../components/layout/header" , {includeHeader : false }) %>
+
+<div class="container main">
+  <h1>Dashboard</h1>
+  <hr />
+
+  <div class="row mx-auto">
+    <% for (let khatabook of khatabooks ) { %>
+    <div class="col-3 mx-auto">
+      <div class="card rounded">
+        <div class="card-body">
+          <h5 class="card-title"><%= khatabook.title%></h5>
+          <hr />
+          <p class="card-text">
+            Customers : <b><%= khatabook.customerCount %></b> <br />
+            You Will Get : <b>900</b> <br />
+            You Will Give : <b>334</b> <br />
+          </p>
+          <!-- <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a> -->
+        </div>
+      </div>
+    </div>
+    <% } %>
+  </div>
+</div>
+
+<%- include("../components/layout/footer") %>
